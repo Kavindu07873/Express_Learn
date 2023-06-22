@@ -33,10 +33,12 @@ app.get('/Customer/?',(req,res)=>{
     app.delete('/Customer/:id',(req,res)=>{
         console.log(req.params)
         res.send('<h1>Delete Customer</h1>')
+       
+
     })
 
     app.put('/Customer/',(req,res)=>{
-        console.log(req.data)
+        console.log(req.body)
         res.send('<h1>Update Customer</h1>')
     })
 
