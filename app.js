@@ -12,19 +12,21 @@ app.get('/',(req,res)=>{
     // console.log('get reques has come')
 })
 
-//json Object eka gaththa
-app.get('/Customer',(req,res)=>{
-    res.send('Hello Customer')
+// json Object eka gaththa
+app.post('/Customer/',(req,res)=>{
+    res.send('Hello Customer json Object eka awa')
     console.log(req.body)
 })
-
+// param ekak ewanawanm mehema thama karanne
 app.get('/Customer/:id',(req,res)=>{
     console.log(req.params)
     res.send(' Customer parem id Come')
 })
-app.get('/Customer/',(req,res)=>{
-    console.log(req.params)
-    res.send(' Customer parem Name Come')
+
+//Query String ekak ewwoth karanne mehema
+app.get('/Customer/?',(req,res)=>{
+    console.log(req.query)
+    res.send(' Customer  Query Come')
 })
 app.listen(port,(req ,res)=>{
     console.log(`Express App listen ${port}`);
