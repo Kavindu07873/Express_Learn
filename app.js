@@ -4,16 +4,18 @@ const res = require('express/lib/response');
 const app = express();
 
 const port = 4000;
+//ewana json request eka alla gannawa
+    app.use(express.json());
 
 app.get('/',(req,res)=>{
-    res.send('get reques has come')
-    console.log('get reques has come')
+    res.send('Hello Express')
+    // console.log('get reques has come')
 })
 
 
 app.get('/Customer',(req,res)=>{
-    res.send('get reques has come Customer')
-    console.log('get reques has come')
+    res.send('Hello Customer')
+    console.log(req.body)
 })
 
 
