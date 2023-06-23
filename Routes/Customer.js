@@ -31,8 +31,24 @@ connection.connect(function(err){
 // router.get('/',(req,res)=>{
 //     res.send('Customer Get Method Normal')
 // })
-router.get('/:id',(req,res)=>{
-    res.send('Customer Get parameter Method Normal')
+router.delete('/:id',(req,res)=>{
+    console.log(req.params.id)
+    const id = req.params.id;
+    const Query = "DELETE FROM Users WHERE id=?"
+    connection.query(Query , [id] , (err,rows)=>{
+        if(err)throw err
+        if(rows.affectedRows>0){
+        res.send({'message' : 'Deleted'})
+        // res.send()
+        }else{
+            res.send({'message': 'Youser Not Found'})
+        }
+        // res.send(rows)
+    })
+    
+    // res.send('Customer Delete parameter Method Normal')
+
+
 })
 router.get('/?',(req,res)=>{
 
