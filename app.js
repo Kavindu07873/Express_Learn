@@ -8,9 +8,6 @@ const port = 4000;
 app.use(express.json());
 app.use('/customer' ,customer);
 
-
-
-
 app.listen(port,(req ,res)=>{
     console.log(`Express App listen ${port}`);
 })
