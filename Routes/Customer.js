@@ -5,6 +5,7 @@ const router = express.Router()
 
 const mysql = require('mysql')
 const db = require('../configs/db.configs')
+const { send } = require('express/lib/response')
 const connection = mysql.createConnection(db.database)
 connection.connect(function(err){
     if(err){
@@ -47,6 +48,29 @@ router.get('/?',(req,res)=>{
 
     // res.send('Customer Get Query Method Normal')
 })
+
+router.put('/',(req,res)=>{
+    var Body = req.body;
+   
+        const id = Body.id;
+        const Name = Body.Name;
+        const address = Body.address;
+
+         const Query = "UPDATE Users SET Name=?, address=? WHERE id =?"
+
+        connection.query(Query , [Name,address,id] , (err,rows)=>{
+            if(err)throw err;
+            // res.send(rows)
+            if(rows.affectedRows>0){
+                res.send(rows.message)
+            }else{
+                res.send({'message':'Not Found That User'})
+            }
+
+        })
+})
+
+
 router.post('/',(req,res)=>{
     var Body = req.body;
    
